@@ -1,0 +1,20 @@
+{
+  "name": "fluentui-37136-toast-priority",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Reproduction for microsoft/fluentui#37136: Toast priority promotes lower values first",
+  "scripts": {
+    "start": "vite --host 0.0.0.0",
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@fluentui/react-components": "9.74.10",
+    "@fluentui/react-toast": "9.8.5",
+    "@vitejs/plugin-react": "6.3.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "vite": "8.3.6"
+  }
+}
