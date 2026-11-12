@@ -31,4 +31,4 @@ Toast B is promoted, so the lower `priority` value wins. That is the opposite of
 
 Verified on `@fluentui/react-toast` 9.8.5 with `@fluentui/react-components` 9.74.10, React 19.3.1.
 
-The relevant implementation is `createToaster.ts`, which builds a min heap with `return a.priority - b.priority`. The existing test `should dequeue toasts in priority` asserts the same lower-first order, so the behaviour is intentional in code and contradicted only by the doc comment in `types.ts`.
+The relevant implementation is `createToaster.ts`, which builds a min heap with `return a.priority - b.priority`. The existing test `should dequeue toasts in priority` asserts the same lower-first order, so the behavior is intentional in code and contradicted only by the doc comment in `types.ts`.

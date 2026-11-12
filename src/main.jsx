@@ -64,22 +64,6 @@ function App() {
   const [verdict, setVerdict] = useState(null);
   const started = useRef(false);
 
-  // Diagnostics for the harness: a noop controller means useFluent() reported no
-  // targetDocument, which silently disables every imperative toast method.
-  useEffect(() => {
-    window.__debug = {
-      dispatchToastSource: String(dispatchToast),
-      isNoop: String(dispatchToast).includes("=>undefined") || String(dispatchToast).length < 40,
-      callDispatch: (content, options) => dispatchToast(content, options),
-      eventCount: 0,
-    };
-    const onShow = () => {
-      window.__debug.eventCount += 1;
-    };
-    document.addEventListener("fui-toast-show", onShow);
-    return () => document.removeEventListener("fui-toast-show", onShow);
-  }, [dispatchToast]);
-
   const log = useCallback((line) => setLines((prev) => [...prev, line]), []);
 
   const run = useCallback(async () => {
@@ -87,7 +71,7 @@ function App() {
     setVerdict(null);
 
     // Long timeouts keep every toast alive for the whole sequence, so the
-    // default 10s auto-dismiss cannot promote a queued toast behind our back.
+    // default auto-dismiss timeout cannot promote a queued toast behind our back.
     const LONG = 120000;
 
     try {
